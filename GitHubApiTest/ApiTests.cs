@@ -44,23 +44,23 @@ namespace GitHubApiTest
             Assert.That(issue.number, Is.EqualTo(1));
         }
 
-        //[Test]
-        //public void Test_GetSingleIssueLabels()
-        //{
+        [Test]
+        public void Test_GetSingleIssueLabels()
+        {
 
-        //    var request = new RestRequest($"{partialUrl/1}", Method.Get);
-        //    var response = this.client.Execute(request);
+            var request = new RestRequest($"{partialUrl}/1", Method.Get);
+            var response = this.client.Execute(request);
 
-        //    //Assert.NotNull(response);
-        //    Assert.That(response.StatusCode, Is.EqualTo(HttpStatusCode.OK), "HTTP status code property");
+            //Assert.NotNull(response);
+            Assert.That(response.StatusCode, Is.EqualTo(HttpStatusCode.OK), "HTTP status code property");
 
-        //    var issue = JsonSerializer.Deserialize<Issue>(response.Content);
+            var issue = JsonSerializer.Deserialize<Issue>(response.Content);
 
-        //    for (int i = 0; i < issue.Labels.Count; i++)
-        //    {
-        //        Assert.That(issue.labels(i), Is.Not.Null);
-        //    }
-        //}
+            for (int i = 0; i < issue.labels.Count; i++)
+            {
+                Assert.That(issue.labels[i].name, Is.Not.Null);
+            }
+        }
 
 
         [Test]
